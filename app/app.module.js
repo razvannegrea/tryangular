@@ -3,4 +3,11 @@
  */
 'use strict'
 
-angular.module('tryangular', ['blogList']);
+angular.module('tryangular', [
+    //external
+    'ngResource',
+    'ngRoute',
+
+    //internal
+    'blogList'
+]);

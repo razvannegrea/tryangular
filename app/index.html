@@ -4,19 +4,19 @@
 <!--[if IE 8]>         <html lang="en" ng-app="tryangular" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="tryangular" class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My AngularJS App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
     <script src="app.module.js"></script>
     <script src="app.config.js"></script>
     <script src="blog-list/blog-list.module.js"></script>
     <script src="blog-list/blog-list.component.js"></script>
-
-
+    <base href="/"/>
     <style>
         .new-class {
             font-size: 72px;
@@ -28,6 +28,7 @@
     </style>
 </head>
 <body>
- <blog-list></blog-list>
+     <div ng-view>
+     </div>
 </body>
 </html>
