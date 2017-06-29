@@ -6,7 +6,8 @@
 angular.module('blogList')
     .component('blogList', {
         templateUrl: "/templates/blog-list.html",
-        controller: function($scope) {
+        controller: function($routeParams, $scope) {
+            console.log($routeParams);
             var blogItems = [
                 {title: "Blog title 1", id: 1, description: "Some description 1", publishDate: "2017-06-29"},
                 {title: "Blog title 2", id: 2, description: "Some description 2", publishDate: "2017-06-28"},

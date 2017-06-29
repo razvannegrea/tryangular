@@ -7,8 +7,7 @@ angular.module('tryangular')
         $locationProvider.html5Mode({ enabled: true });
         $routeProvider
             .when("/", { template: "<blog-list></blog-list>" })
-            .when("/about", { template: "<h1>About us</h1>" })
-            .when("/blog/1", { template: "<h1> Hi, from blog 1 </h1>" })
-            .when("/blog/2", { template: "<blog-list></blog-list>" })
+            .when("/about", { templateUrl: "/about.html" })
+            .when("/blog/:id", { template: "<blog-detail></blog-detail>" })
             .otherwise({ template: "Not found !" });
     } );
