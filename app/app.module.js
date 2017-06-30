@@ -10,5 +10,6 @@ angular.module('tryangular', [
 
     //internal
     'blogDetail',
-    'blogList'
+    'blogList',
+    'confirmClick'
 ]);
