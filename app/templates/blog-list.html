@@ -2,7 +2,8 @@
 
 <ul ng-if="items.length > 0">
     <li ng-repeat="item in items">
-        <a ng-href='/blog/{{ item.id }}' confirm-click="Are you ready ???" confirmed-click="/blog/{{item.id}}">{{item.title}} ({{item.publishDate}})</a>
+        <a ng-href='/blog/{{item.id}}' confirm-click='Are you ready ?' confirmed-click='goToItem(item)'>{{item.title}} ({{item.publishDate}})</a>
+        <!--<a href='#' ng-click='goToItem(item)'>{{item.title}} ({{item.publishDate}})</a>-->
         <!--<confirm-click message='Are you sure ?' eq='10 + 1000' post='item'></confirm-click> -->
     </li>
 </ul>
