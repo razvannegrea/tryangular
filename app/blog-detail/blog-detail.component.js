@@ -9,18 +9,40 @@ angular.module('blogDetail')
             $scope.title = "Blog " + $routeParams.id;
             $scope.notFound = true;
 
+            $scope.addReply = function() {
+                console.log($scope.reply);
+                $scope.post.comments.push($scope.reply);
+
+                resetReply($scope);
+            }
+
+            $scope.deleteComment = function(comment) {
+                console.log("Delete comment " + comment.text);
+                $scope.$apply(
+                    $scope.post.comments.splice($scope.post.comments.indexOf(comment), 1)
+                );
+            }
+
             Post.query(function(data){
                 $scope.notFound = true;
-               angular.forEach(data, function(post){
-                   if (post.id == $routeParams.id) {
-                       $scope.notFound = false;
-                       $scope.post = post;
-                   }
-               });
-               redirectToHome($scope.notFound);
+                angular.forEach(data, function(post){
+                    if (post.id == $routeParams.id) {
+                        $scope.notFound = false;
+                        $scope.post = post;
+                        //Initialize a reply:
+                        resetReply($scope);
+                    }
+                });
+                redirectToHome($scope.notFound);
             });
 
-
+            function resetReply(scope){
+                scope.reply = {
+                    "id" : scope.post.comments.length + 1,
+                    "text" : ""
+                };
+            }
+            
             function redirectToHome(notFound){
                 if (notFound) {
                     $location.path("/");
