@@ -11,7 +11,8 @@
 <span ng-if="items.length == 0">Posts coming soon...</span>
 <br/>
 <hr/>
-<div class="row" ng-repeat="items in colItems">
+
+<div class="row" dir-paginate="items in colItems | itemsPerPage: 2" pagination-id="main-content"> <!-- The items per page refers to the ROWS, not to posts. -->
     <div class="{{cssClass}}" ng-repeat="post in items | filter: query">
         <div class="thumbnail">
             <div class="caption">
@@ -25,3 +26,14 @@
         </div>
     </div>
 </div>
+
+<dir-pagination-controls ng-hide="query.length > 0" pagination-id="main-content"></dir-pagination-controls>
+
+<hr/>
+<h3>Nasty looking list</h3><br/>
+<ul>
+    <li dir-paginate="item in items | itemsPerPage: 3" pagination-id="nasty-pagination">
+        {{item.title}}
+    </li>
+</ul>
+<dir-pagination-controls pagination-id="nasty-pagination"></dir-pagination-controls>
