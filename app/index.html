@@ -29,6 +29,9 @@
 
     <script src="utils/confirm-click/confirm-click.module.js"></script>
     <script src="utils/confirm-click/confirm-click.directive.js"></script>
+
+    <script src="utils/try-nav/try-nav.module.js"></script>
+    <script src="utils/try-nav/try-nav.directive.js"></script>
     <base href="/"/>
     <style>
         .new-class {
@@ -41,11 +44,11 @@
     </style>
 </head>
 <body>
-    <nav class="container">
-        <h1>~ RRRRRRRRrrrrrrrrrrooooooooooaaaaaaaaarrrrrrrrrrrrrr ~</h1>
-    </nav>
-    <div class="container" ng-view>
+    <div  class="container">
+        <try-nav></try-nav>
+        <div ng-view>
 
+        </div>
     </div>
 </body>
 </html>

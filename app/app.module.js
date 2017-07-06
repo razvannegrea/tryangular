@@ -12,5 +12,6 @@ angular.module('tryangular', [
     //internal
     'blogDetail',
     'blogList',
-    'confirmClick'
+    'confirmClick',
+    'tryNav'
 ]);

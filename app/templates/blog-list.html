@@ -1,6 +1,20 @@
-<h1>Blog list</h1>
-<div class="col-sm-6">
-    <input type="text" ng-model="query" class="form-control" placeholder="Filter posts"/>
+<div class="row">
+    <div class="col-sm-6" col-sm-offset-3>
+        <h1>Blog list</h1>
+        <div class="row">
+            <div class="col-sm-6">
+                <input type="text" ng-model="query" class="form-control" placeholder="Filter posts"/>
+            </div>
+            <div class="col-sm-6">
+                <select class="form-control" ng-model="order">
+                    <option value="-publishDate">Recent</option>
+                    <option value="publishDate">Older</option>
+                    <option value="title">A-Z</option>
+                    <option value="-title">Z-A</option>
+                </select>
+            </div>
+        </div>
+    </div>
 </div>
 <!--<ul ng-if="items.length > 0">-->
     <!--<li ng-repeat="item in items">-->
@@ -11,13 +25,31 @@
 <span ng-if="items.length == 0">Posts coming soon...</span>
 <br/>
 <hr/>
-<select ng-model="order">
-    <option value="-publishDate">Recent</option>
-    <option value="publishDate">Older</option>
-    <option value="title">A-Z</option>
-    <option value="-title">Z-A</option>
-</select>
-<div class="row" dir-paginate="items in colItems | itemsPerPage: 2" pagination-id="main-content"> <!-- The items per page refers to the ROWS, not to posts. -->
+<div class="col-sm-6 col-sm-offset-3">
+    <dir-pagination-controls ng-hide="query.length > 0" pagination-id="sub-content"></dir-pagination-controls>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3" dir-paginate="post in items | orderBy: order | filter: query | itemsPerPage: 5 as postItems" pagination-id="sub-content">
+        <div class="thumbnail">
+            <img ng-src="{{post.image}}" alt="..."/>
+            <div class="caption">
+                <h3>{{post.title}}</h3>
+                <p>{{post.description}} </p>
+                <p>{{post.publishDate}}</p>
+                <p>
+                    <a ng-href="#" confirm-click='Are you ready ?' confirmed-click='goToItem(post)' class="btn btn-primary" role="button">View</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <span ng-if="postItems.length == 0">No posts found</span>
+</div>
+<div class="col-sm-6 col-sm-offset-3">
+    <dir-pagination-controls ng-hide="query.length > 0" pagination-id="sub-content"></dir-pagination-controls>
+</div>
+
+<!--
+<div class="row" dir-paginate="items in colItems | itemsPerPage: 2" pagination-id="main-content">
     <div class="{{cssClass}}" ng-repeat="post in items | orderBy: order | filter: query">
         <div class="thumbnail">
             <img ng-src="{{post.image}}" alt="..."/>
@@ -32,10 +64,10 @@
         </div>
     </div>
 </div>
-
 <dir-pagination-controls ng-hide="query.length > 0" pagination-id="main-content"></dir-pagination-controls>
-
+-->
 <hr/>
+<br/>
 <h3>Nasty looking list</h3><br/>
 <ul>
     <li dir-paginate="item in items | itemsPerPage: 3" pagination-id="nasty-pagination">
