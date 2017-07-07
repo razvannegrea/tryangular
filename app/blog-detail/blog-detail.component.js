@@ -38,7 +38,7 @@ angular.module('blogDetail')
 
             function resetReply(scope){
                 scope.reply = {
-                    "id" : scope.post.comments.length + 1,
+                    "id" : scope.post.comments ? scope.post.comments.length  + 1 : 1,
                     "text" : ""
                 };
             }

@@ -8,6 +8,7 @@ angular.module('tryangular', [
     'angularUtils.directives.dirPagination',
     'ngResource',
     'ngRoute',
+    'ui.bootstrap',
 
     //internal
     'blogDetail',

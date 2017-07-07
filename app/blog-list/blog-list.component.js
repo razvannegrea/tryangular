@@ -7,7 +7,11 @@ angular.module('blogList')
     .component('blogList', {
         templateUrl: "/templates/blog-list.html",
         controller: function(Post, $location, $routeParams, $rootScope, $scope) {
-            $scope.title = 'Hi, there';
+            var q = $location.search().q;
+            if (q) {
+                $scope.query = q;
+            }
+
             $scope.order = "title";
             $scope.goToItem = function(post) {
                 $rootScope.$apply(function(){

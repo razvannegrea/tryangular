@@ -3,4 +3,4 @@
  */
 'use strict';
 
-angular.module('tryNav', []);
+angular.module('tryNav', ['post']);
